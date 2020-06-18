@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/bradyjoestar/fabric-gosdk-demo/cli"
@@ -58,6 +59,13 @@ func Phase1(cli1, cli2 *cli.Client) {
 		log.Panicf("Query chaincode error: %v", err)
 	}
 	log.Println("Query chaincode success on peer0.org1")
+
+
+	fmt.Println("-------------query org2 peer0-------------")
+	if err := cli1.QueryCC("peer0.org2.example.com", "a"); err != nil {
+		log.Panicf("Query chaincode error: %v", err)
+	}
+	log.Println("Query chaincode success on peer0.org2")
 }
 
 func Phase2(cli1, cli2 *cli.Client) {
